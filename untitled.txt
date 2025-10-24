@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amany Btoush | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BODY & BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff;
+    background: #1c0b34;
+    perspective: 1000px;
+}
+
+/* ===== FLOATING GLASS SHAPES ===== */
+.glass-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+    pointer-events: none;
+}
+@keyframes float {
+    0% { transform: translate3d(0,0,0) rotate(0deg); }
+    50% { transform: translate3d(300px, -200px, 50px) rotate(180deg); }
+    100% { transform: translate3d(0,0,0) rotate(360deg); }
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.toggle-lang {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+.toggle-lang:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+/* ===== INTRO ===== */
+.intro {
+    text-align: center;
+    padding: 60px 20px;
+}
+.intro h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+.intro p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: auto;
+}
+.intro-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.intro-buttons a {
+    background: rgba(255,255,255,0.2);
+    padding: 12px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.intro-buttons a:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.4);
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+.social a {
+    font-size: 1.8rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.social a:hover {
+    transform: rotateY(15deg) scale(1.2);
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 60px 20px;
+    position: relative;
+    z-index: 2;
+}
+h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ===== GRID CARDS ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: rgba(255,255,255,0.2);
+}
+
+/* ===== CONTACT FORM ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: auto;
+}
+input, textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+button.submit {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button.submit:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== SLIDER ===== */
+.slider-container {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+.slide {
+    min-width: 100%;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+.slide img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+.slide img:hover {
+    transform: scale(1.05) rotateY(10deg);
+}
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.3);
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.prev:hover, .next:hover {
+    background: rgba(255,255,255,0.5);
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== BACKGROUND FLOATING GLASS SHAPES ===== -->
+<div class="glass-shape" style="top:10%; left:5%; width:80px; height:80px;"></div>
+<div class="glass-shape" style="top:20%; left:50%; width:100px; height:100px;"></div>
+<div class="glass-shape" style="top:70%; left:20%; width:60px; height:60px;"></div>
+<div class="glass-shape" style="top:50%; left:80%; width:120px; height:120px;"></div>
+<div class="glass-shape" style="top:80%; left:40%; width:90px; height:90px;"></div>
+
+<div class="container">
+    <!-- HEADER -->
+    <header>
+        <h2 id="logo">Amany Btoush</h2>
+        <button class="toggle-lang" onclick="toggleLanguage()">EN/AR</button>
+    </header>
+
+    <!-- INTRO -->
+    <div class="intro">
+        <h1 id="intro-title">مرحبا! أنا أماني بطوش</h1>
+        <p id="intro-desc">مهندسة برمجيات متخصصة في تطوير الويب الأمامي وتطوير تطبيقات أندرويد. أسعى دائمًا لتحقيق أهدافي وأتطلع للعمل ضمن فريق احترافي.</p>
+        <div class="intro-buttons">
+            <a href="https://wa.me/0798053376" target="_blank">واتساب مباشر</a>
+            <a href="https://www.instagram.com/amanybtoush11?igsh=YmljemwyOW94dTNz" target="_blank">📸 إنستغرام</a>
+        </div>
+        <div class="social">
+            <a class="icon">🌐</a>
+            <a class="icon">💻</a>
+            <a class="icon">🚀</a>
+        </div>
+    </div>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="grid">
+            <div class="card"><h3>Technical Skills</h3><p>PHP, CSS/HTML, Android, C++</p></div>
+            <div class="card"><h3>Soft Skills</h3><p>Excellent communication, Problem solving, Creativity, Teamwork</p></div>
+            <div class="card"><h3>Languages</h3><p>Arabic (Mother tongue), English (speaking, writing, reading)</p></div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="grid">
+            <div class="card"><h3>QA – Software Testing</h3><p>The Hope International – Amman, Jordan</p><p>Tools: Postman, Fiddler, Ghost Inspector</p></div>
+            <div class="card"><h3>Technical Skills</h3><p>Android Development (Kotlin), QA Testing, Communication & Problem Solving</p></div>
+        </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section id="slider">
+        <h2>اقتباسات وصور</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide"><img src="https://via.placeholder.com/300x200" alt="Project 1"><p>"الإبداع هو سر النجاح في البرمجة"</p></div>
+                <div class="slide"><img src="https://via.placeholder.com/300x200" alt="Project 2"><p>"التعاون ضمن الفريق يسرع الوصول للأهداف"</p></div>
+                <div class="slide"><img src="https://via.placeholder.com/300x200" alt="Project 3"><p>"التعلم المستمر يفتح آفاق جديدة"</p></div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="الاسم" required>
+            <input type="email" placeholder="البريد الإلكتروني" required>
+            <textarea placeholder="رسالتك" rows="5" required></textarea>
+            <button class="submit" type="submit">إرسال</button>
+        </form>
+    </section>
+
+</div>
+
+<footer>&copy; 2025 Amany Btoush | All rights reserved</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://unpkg.com/i18next@21.9.1/dist/umd/i18next.min.js"></script>
+<script>
+/* ===== LANGUAGE ===== */
+const resources = {
+    en: { translation: { "intro-title":"Hello! I'm Amany Btoush","intro-desc":"Junior Web Developer specializing in front-end and Android development. I always aspire to achieve my goals and seek a career to gain experience." } },
+    ar: { translation: { "intro-title":"مرحبا! أنا أماني بطوش","intro-desc":"مهندسة برمجيات متخصصة في تطوير الويب الأمامي وتطوير تطبيقات أندرويد. أسعى دائمًا لتحقيق أهدافي وأتطلع للعمل ضمن فريق احترافي." } }
+};
+i18next.init({ lng:'ar', debug:true, resources });
+function updateContent() {
+    document.getElementById('intro-title').innerText = i18next.t('intro-title');
+    document.getElementById('intro-desc').innerText = i18next.t('intro-desc');
+}
+function toggleLanguage() {
+    i18next.changeLanguage(i18next.language === 'ar' ? 'en' : 'ar', updateContent);
+}
+updateContent();
+
+/* ===== SLIDER LOGIC ===== */
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+document.querySelector(".next").addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    document.querySelector(".slider").style.transform = `translateX(-${currentSlide * 100}%)`;
+});
+document.querySelector(".prev").addEventListener("click", ()
